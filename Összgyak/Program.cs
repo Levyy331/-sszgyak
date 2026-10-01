@@ -1,1 +1,11 @@
-﻿Console.WriteLine("Hello, World!");
+﻿using Összgyak;
+
+List<Eszkoz> eszkozok = new List<Eszkoz>();
+string fajlEleres = "eszkozok.txt";
+
+
+
+
+
+
+
