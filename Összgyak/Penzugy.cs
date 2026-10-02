@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Összgyak
 {
-    internal static class Penzugy
+    public static class Penzugy
     {
         public static double BruttoArSzamitas(double nettoAr)
         {
