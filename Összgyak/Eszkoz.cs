@@ -16,13 +16,32 @@ namespace Összgyak
         public int BeszerzesiAr
         {
             get { return beszerzesiAr; }
-            set { beszerzesiAr = value < 0 ? 0 : value; }
+            set {
+                if (value < 0)
+                { 
+                    beszerzesiAr = 0;
+                }
+                else
+                {
+                    beszerzesiAr=value;
+                }
+            }
         }
 
         public int RaktarKeszlet
         {
             get { return raktarKeszlet; }
-            set { raktarKeszlet = value < 0 ? 0 : value; }
+            set
+            {
+                if (value < 0)
+                {
+                    raktarKeszlet = 0;
+                }
+                else
+                {
+                    raktarKeszlet=value;
+                }
+            }
         }
 
         public static int OsszesLetezoEszkoz
@@ -31,23 +50,22 @@ namespace Összgyak
         }
 
         public Eszkoz(string cikkszam, string nev, int beszerzesiAr)
-            : this(cikkszam, nev, beszerzesiAr, 0)
-        {
-        }
-
-        public Eszkoz(string cikkszam, string nev, int beszerzesiAr, int raktarKeszlet)
         {
             Cikkszam = cikkszam;
             Nev = nev;
             BeszerzesiAr = beszerzesiAr;
-            RaktarKeszlet = raktarKeszlet;
+            raktarKeszlet = 0;
+        }
 
+        public Eszkoz(string cikkszam, string nev, int beszerzesiAr, int raktarKeszlet):this(cikkszam,nev, beszerzesiAr)
+        {
+            RaktarKeszlet = raktarKeszlet;
             osszesLetezoEszkoz++;
         }
 
         public override string ToString()
         {
-            return $"[{Cikkszam}] {Nev}, Beszerzési ár: {BeszerzesiAr} Ft, Készlet: {RaktarKeszlet} db";
+            return $"[{Cikkszam}] {Nev} | Beszerzési ár: {BeszerzesiAr} Ft | Készlet: {RaktarKeszlet} db";
         }
 
         public bool Eladas(int db)
@@ -59,7 +77,7 @@ namespace Összgyak
             }
             else
             {
-                Console.WriteLine($" Nincs elegendő készleten! (Kért: {db} db, Raktáron: {RaktarKeszlet} db)");
+                Console.WriteLine($" Nincs elegendő készleten!");
                 return false;
             }
         }
